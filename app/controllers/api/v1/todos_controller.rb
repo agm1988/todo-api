@@ -12,7 +12,7 @@ class Api::V1::TodosController < Api::V1::ApplicationController
                                              order_by: params[:order_by]
                                            },
                                            search: params[:search],
-                                           filters: filters)
+                                           filters: filters.to_unsafe_hash)
 
     render json: todos
   end

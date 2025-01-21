@@ -25,6 +25,7 @@ module FilterHelper
 
       # If we got incorrect key from the frontend
       next if table_data.blank?
+      next unless value.present?
 
       table = table_data[:table]
       field = table_data[:field]
