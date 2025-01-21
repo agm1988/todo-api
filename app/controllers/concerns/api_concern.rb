@@ -63,8 +63,12 @@ module ApiConcern
     render_error data: error
   end
 
+  # def render_error(error: I18n.t('errors.something_went_wrong'), data: nil, status: 400)
+  #   render json: { error: error, data: data }, status: status
+  # end
+
   def render_error(error: I18n.t('errors.something_went_wrong'), data: nil, status: 400)
-    render json: { error: error, data: data }, status: status
+    render json: { message: error, data: data }, status: status
   end
 
   def bad_request
