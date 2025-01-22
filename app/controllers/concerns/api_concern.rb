@@ -42,7 +42,6 @@ module ApiConcern
 
   def render_server_error(error)
     if Rails.env.production?
-      Sentry.capture_exception(error)
       render_json_error(error: I18n.t('errors.something_went_wrong'), status: 500)
     else
       render_error error: error.inspect, status: 500
