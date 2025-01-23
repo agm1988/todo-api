@@ -2,7 +2,7 @@ class Api::V1::TodosController < Api::V1::ApplicationController
   before_action :set_todo, only: %i[show update destroy]
 
   def index
-    filters = params[:filters] || {}
+    filters = params[:filters]&.permit!.to_h
 
     todos = Todos::TodosSearchService.call(todo_id: params[:todo_id],
                                            meta: {
@@ -12,7 +12,7 @@ class Api::V1::TodosController < Api::V1::ApplicationController
                                              order_by: params[:order_by]
                                            },
                                            search: params[:search],
-                                           filters: filters.to_unsafe_hash)
+                                           filters: filters)
 
     render json: todos
   end
