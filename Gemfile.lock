@@ -89,6 +89,8 @@ GEM
       irb (~> 1.10)
       reline (>= 0.3.8)
     diff-lcs (1.5.1)
+    dockerfile-rails (1.7.3)
+      rails (>= 3.0.0)
     dotenv (3.1.7)
     drb (2.2.1)
     erubi (1.13.1)
@@ -285,6 +287,7 @@ DEPENDENCIES
   bootsnap
   brakeman
   debug
+  dockerfile-rails (>= 1.7)
   dotenv
   factory_bot_rails
   faker

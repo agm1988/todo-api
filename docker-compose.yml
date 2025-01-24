@@ -1,0 +1,20 @@
+version: "3.9"
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      DATABASE_URL: postgres://postgres:password@db:5432/todo_development
+      CLIENT_URL: http://localhost:3001
+      SECRET_KEY_BASE: c7b729e6133184005d9e17cff3984fbfb5b739805f866d904469d42112fcc13f248ea93a97f9855753fbc5151bdfbbef75a6e1218d79d2e4670c93d4d7de6f71
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: todo_development
+    ports:
+      - "5432:5432"
